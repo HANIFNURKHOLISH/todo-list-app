@@ -1,6 +1,5 @@
 export const handleApiError = (error) => {
     if (error.response) {
-        // Server responded with error status
         const status = error.response.status;
         const message = error.response.data?.message || 'Terjadi kesalahan pada server';
 
@@ -23,10 +22,10 @@ export const handleApiError = (error) => {
     }
 
     if (error.request) {
-        // Request made but no response received
+
         return 'Tidak dapat terhubung ke server';
     }
 
-    // Something else went wrong
+
     return 'Terjadi kesalahan';
 };

@@ -10,15 +10,15 @@ const routes = [
 :
 {
     requiresAuth: true
-}
-, // Fitur-fitur ini hanya bisa diakses setelah login [cite: 111]
+},
+
 children: [
     {
         path: '',
         name: 'Dashboard',
         component
 :
-() => import('../views/Dashboard.vue'), // Halaman untuk menampilkan & membuat checklist [cite: 100, 102]
+() => import('../views/Dashboard.vue'),
 },
 {
     path: 'checklist/:id',
@@ -26,7 +26,7 @@ children: [
 :
     'ChecklistDetail',
         
-    component: () => import('../views/ChecklistDetail.vue'), // Halaman detail checklist [cite: 103]
+    component: () => import('../views/ChecklistDetail.vue'),
         props
 :
     true,
@@ -47,7 +47,7 @@ children: [
             name: 'Login',
             component
 :
-    () => import('../views/Login.vue'), // Halaman login [cite: 98]
+    () => import('../views/Login.vue'),
 },
     {
         path: 'register',
@@ -55,7 +55,7 @@ children: [
     :
         'Register',
             
-        component: () => import('../views/Register.vue'), // Halaman daftar baru [cite: 99]
+        component: () => import('../views/Register.vue'),
     }
 ,
 ],
@@ -76,7 +76,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    // Cek pinia store setelah diinisialisasi
+
     const authStore = useAuthStore();
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
